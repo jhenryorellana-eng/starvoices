@@ -46,7 +46,6 @@ export function BottomNav() {
         'bg-[#F4F4F1]/80 backdrop-blur-xl backdrop-saturate-150',
         'supports-[backdrop-filter]:bg-[#F4F4F1]/70'
       )}
-      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <div className="max-w-md mx-auto flex items-center justify-around py-2 px-4">
         {navItems.map((item) => {
