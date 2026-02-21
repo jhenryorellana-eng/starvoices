@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevenir bounce en iOS */
+html, body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  background-color: #F4F4F1;
+  color: #1A1A1A;
+}
+
+/* Ocultar scrollbar pero permitir scroll */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevenir seleccion de texto en elementos interactivos */
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input:focus, textarea:focus, button:focus {
+  outline: none;
+}
+
+/* Blur nav (iOS glass) */
+.blur-nav {
+  background: rgba(244, 244, 241, 0.82);
+  backdrop-filter: saturate(200%) blur(24px);
+  -webkit-backdrop-filter: saturate(200%) blur(24px);
+  box-shadow: 0 -1px 0 rgba(200, 150, 62, 0.06), 0 -1px 3px rgba(0,0,0,0.03);
+}
+
+/* Snap scroll para feed TikTok */
+.snap-feed {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-feed > * {
+  scroll-snap-align: start;
+}
+
+/* Glass Card System */
+.glass-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(253,248,240,0.5) 50%, rgba(255,255,255,0.55) 100%);
+  backdrop-filter: saturate(200%) blur(18px);
+  -webkit-backdrop-filter: saturate(200%) blur(18px);
+  border: 1px solid rgba(200, 150, 62, 0.1);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02), 0 0 0 0.5px rgba(200,150,62,0.06), inset 0 1px 0 rgba(255,255,255,0.65);
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease;
+}
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(200,150,62,0.06) 0%, rgba(255,255,255,0.12) 15%, transparent 40%, transparent 60%, rgba(255,255,255,0.05) 80%, rgba(200,150,62,0.04) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Premium Glass Card */
+.glass-card-premium {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(253,248,240,0.6) 0%, rgba(255,255,255,0.55) 40%, rgba(253,248,240,0.5) 100%);
+  backdrop-filter: saturate(220%) blur(26px);
+  -webkit-backdrop-filter: saturate(220%) blur(26px);
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 8px 40px rgba(200,150,62,0.1), 0 2px 12px rgba(184,69,58,0.04), inset 0 1px 0 rgba(255,255,255,0.75);
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glass-card-premium::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: conic-gradient(from 45deg, rgba(200,150,62,0.4) 0deg, rgba(239,197,132,0.3) 40deg, rgba(184,69,58,0.3) 90deg, rgba(255,255,255,0.35) 140deg, rgba(30,58,95,0.3) 200deg, rgba(255,255,255,0.2) 260deg, rgba(184,69,58,0.2) 310deg, rgba(200,150,62,0.4) 360deg);
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1.5px;
+  animation: chromatic-rotate 16s linear infinite;
+}
+
+/* Gradient CTA Button */
+.btn-utah-gradient {
+  background: linear-gradient(135deg, #C8963E 0%, #B8453A 100%);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-utah-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #B8453A 0%, #C8963E 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-utah-gradient:hover::before { opacity: 1; }
+.btn-utah-gradient span { position: relative; z-index: 1; }
+
+/* Utah warm badge */
+.badge-utah {
+  background: linear-gradient(135deg, rgba(200,150,62,0.12) 0%, rgba(184,69,58,0.08) 100%);
+  border: 1px solid rgba(200,150,62,0.15);
+  color: #8F6520;
+}
+
+/* Waveform bars */
+.waveform-bar {
+  display: inline-block;
+  width: 3px;
+  border-radius: 1.5px;
+  transform-origin: bottom;
+  background-color: currentColor;
+}
+
+/* Premium spinner */
+.premium-spinner {
+  border: 3px solid rgba(200, 150, 62, 0.15);
+  border-top-color: #C8963E;
+  border-radius: 50%;
+  animation: spin 0.8s ease-in-out infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Gold progress bar glow */
+.progress-glow {
+  box-shadow: 0 0 8px rgba(200,150,62,0.4), 0 0 2px rgba(200,150,62,0.6);
+}
+
+/* Premium skeleton shimmer */
+.skeleton-premium {
+  background: linear-gradient(90deg, rgba(200,150,62,0.06) 0%, rgba(200,150,62,0.14) 50%, rgba(200,150,62,0.06) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.75rem;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes chromatic-rotate {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  25% { filter: hue-rotate(8deg) brightness(1.02); }
+  50% { filter: hue-rotate(0deg) brightness(1.04); }
+  75% { filter: hue-rotate(-8deg) brightness(1.02); }
+  100% { filter: hue-rotate(0deg) brightness(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
