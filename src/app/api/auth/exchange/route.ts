@@ -53,7 +53,15 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      userData = await response.json();
+      const hubData = await response.json();
+      userData = {
+        id: hubData.user.id,
+        familyId: hubData.user.familyId,
+        firstName: hubData.user.firstName,
+        lastName: hubData.user.lastName,
+        email: hubData.user.email || null,
+        code: hubData.user.code,
+      };
     }
 
     // Validate parent code
